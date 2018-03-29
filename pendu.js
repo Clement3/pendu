@@ -1,9 +1,5 @@
+// Config
 var configEssaieMaximum = 3;
-
-var essaieMaximum = 3;
-var el = document.getElementById("obtenirCaractere");
-var pendu = document.getElementById("pendu");
-var essaie = 0;
 
 var mots = [
 	"chat",
@@ -11,13 +7,19 @@ var mots = [
 	"maman",
 ];
 
-var caractereDonner = [];
+// DOM
+var el = document.getElementById("obtenirCaractere");
+var motChoisi = document.getElementById("motChoisi");
 
-var nombreDeMots = length(mots);
-var random = getRandomInt(nombreDeMots);
-var motSelectionner = mots[random];
-var caractereCacher = [];
+// Essaie
+var essaieMaximum = 3;
+var essaie = 0;
+
+
+var motSelectionner = obtenirMotRandom(mots);
 var nombreDeCaractere = length(motSelectionner);
+
+var caractereCacher = [];
 var caractereDuMot = [];
 
 for (var i = 0; i < nombreDeCaractere; i++) {
@@ -32,8 +34,7 @@ for (var n = 0; n < nombreDeCaractere; n++) {
 	}
 }
 
-var motChoisi = document.getElementById("motChoisi");
-motChoisi.textContent = "Votre mot : " + caractereCacher + ". Vous avez " + essaieMaximum + " essaie";
+motChoisi.innerHTML = "Votre mot : " + caractereCacher + ". Vous avez " + essaieMaximum + " essaie";
 
 el.onclick = function() {
 	var caractere = document.getElementById("caractere").value;
@@ -48,25 +49,25 @@ el.onclick = function() {
 		}
 		
 		if (compareArray(caractereCacher, caractereDuMot)) {
-			motChoisi.textContent = "Vous avez gagnez - Le mot est donc : " + motSelectionner + ". Vous avez " + essaieMaximum + " essaie";
+			motChoisi.innerHTML = "Vous avez gagnez - Le mot est donc : " + motSelectionner + ". Il vous restez " + essaieMaximum + " essaie";
+			supprimerContenu();
+			rechargerLaPage();
 			return;
 		}
 
-		motChoisi.textContent = "Votre mot : " + caractereCacher + ". Vous avez " + essaieMaximum + " essaie";
+		motChoisi.innerHTML = "Votre mot : " + caractereCacher + ". Vous avez " + essaieMaximum + " essaie";
 
 	} else {
 		essaie++;
 		essaieMaximum--;
-		motChoisi.textContent = "Votre mot : " + caractereCacher + ". Vous avez " + essaieMaximum + " essaie";		
+		motChoisi.innerHTML = "Votre mot : " + caractereCacher + ". Vous avez " + essaieMaximum + " essaie";		
 	}
 	
 	if(essaie > configEssaieMaximum) {
-		motChoisi.textContent = "Vous avez perdu - Le mot était : " + motSelectionner;
+		motChoisi.innerHTML = "Vous avez perdu - Le mot était : " + motSelectionner;
+		rechargerLaPage();
+		return;
 	}
-}
 
-function supprimerContenu(element) {
-  element.value = '';
+	supprimerContenu();
 }
-
-pendu.appendChild(motChoisi);

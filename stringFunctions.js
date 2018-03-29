@@ -51,7 +51,34 @@ function hasCharacter(word, character) {
     }
 }
 
-function getRandomInt(max) {
+function obtenirNombreRandom(max) {
 	return Math.floor(Math.random() * Math.floor(max));
 }
 
+function supprimerContenu() {
+    var element = document.getElementById("caractere");	
+    element.value = '';
+}
+
+function obtenirMotRandom(tableau) {
+    var nombreDeMots = length(mots);
+    var random = obtenirNombreRandom(nombreDeMots);
+    var motSelectionner = mots[random];
+
+    return motSelectionner;
+}
+
+function rechargerLaPage() {
+    return window.setTimeout(function() {
+        window.location.reload();
+    }, 3000); 
+}
+
+function InProgressReessayer() {
+    var pendu = document.getElementById("pendu");
+    var button = document.createElement("button");
+    button.className += "btn btn-primary";
+    button.textContent = "Réessayer";
+    button.setAttribute("onClick", window.location.reload());
+    pendu.appendChild(button);
+}

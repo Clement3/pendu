@@ -12,15 +12,14 @@
   </head>
   <body>
     <div class="container">
-		<div class="jumbotron mt-5 text-center" id="pendu">
+		<div class="jumbotron mt-5 text-center">
 			<h1>Jeu du pendu</h1>
       
       <p class="lead" id="motChoisi"></p>
 
-			<form action="#">
+			<form action="#" id="pendu">
 				<div class="form-group">
-					<label for="mot">Mot que vous selectionnez</label>
-					<input onfocus="supprimerContenu(this)" type="text" class="form-control" id="caractere" placeholder="Ecrire un caractère" style="width: 25%; margin: 0 auto;">
+					  <input type="text" class="form-control" id="caractere" placeholder="Ecrire un caractère" style="width: 25%; margin: 0 auto;">
 				</div>
 				<button class="btn btn-primary" id="obtenirCaractere">Envoyer</button>
 			</form>

@@ -38,7 +38,7 @@ function compareArray(a1, a2) {
 	return true;
 }
 
-function hasCharacter(word, character) {
+function testCaractere(word, character) {
     // On créer une variable "longueur" qui utilise la fonction length qui nous permet de 
     // récupérer la longueur de notre chaine de caractère 
     var longueur = length(word);
@@ -56,22 +56,59 @@ function obtenirNombreRandom(max) {
 }
 
 function supprimerContenu() {
+    // récupère l'element "caractere"
     var element = document.getElementById("caractere");	
+    // Vide l'élément caractère
     element.value = '';
 }
 
 function obtenirMotRandom(tableau) {
-    var nombreDeMots = length(mots);
-    var random = obtenirNombreRandom(nombreDeMots);
-    var motSelectionner = mots[random];
+    // On récupère la longueur du tableau
+    var longueurDuTableau = length(tableau);
+    // On génére un nombre aléatoire avec la fonction "obtenirNombreRandom"
+    // qui prend en parametre "longueurDuTableau"
+    var random = obtenirNombreRandom(longueurDuTableau);
+    // On récupère le mot choisi aléatoirement dans le tableau
+    var motSelectionner = tableau[random];
 
     return motSelectionner;
 }
 
 function rechargerLaPage() {
+    // Attend 3s et recharge la page
     return window.setTimeout(function() {
         window.location.reload();
     }, 3000); 
+}
+
+function verificationNombreTaper(valeur) {
+    if (valeur !== "" && length(valeur) === 1) {
+        return true;
+    }
+}
+
+function afficherMots(mots) {
+    var longueur = length(mots);
+
+    var output = document.getElementById("motChoisi");
+
+    output.innerHTML = "";
+
+    for (var i = 0; i < longueur; i++) {
+
+        var btn = document.createElement("button");
+
+        btn.classList.add("btn");
+        btn.classList.add("btn-secondary");
+        btn.textContent = mots[i];
+        output.appendChild(btn);  
+    }  
+}
+
+function tentativeRestante(tentative) {
+    var nombreTentative = document.getElementById("nombreTentative");
+
+    nombreTentative.innerHTML = tentative + " tentatives restante"; 
 }
 
 function InProgressReessayer() {

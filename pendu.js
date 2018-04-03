@@ -1,5 +1,5 @@
 // Config
-var tentativeMaximum = 3;
+var tentativeMaximum = 11;
 
 var mots = [
 	"chat",
@@ -22,6 +22,7 @@ var nombreDeCaractere = length(motSelectionner);
 var caractereCacher = [];
 var caractereDuMot = [];
 
+var tentativeImage = 1;
 
 // Temps que c'est inférieur au nombreDeCaractere 
 // On stock dans le tableau "caractereDuMot" chaque caractere 1 par 1
@@ -100,7 +101,9 @@ el.onclick = function() {
 			afficherMots(caractereCacher);
 			tentativeRestante(tentativeMaximum);
 			erreur.classList.remove("d-none");
-			erreur.innerHTML = "Vous vous êtes tromper";		
+			erreur.innerHTML = "Vous vous êtes tromper";
+			
+			decoupeImage(tentativeImage++);
 		}
 		
 		// Si il n'y à plus de tentative

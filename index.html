@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="./pendu.css">
 
     <title>Jeu du pendu</title>
-    
+
   </head>
   <body>
     <div class="container">
@@ -27,17 +27,24 @@
 
       </div>
 
-			<form action="#" id="pendu">
-				<div class="form-group">
-					  <input type="text" class="form-control" id="caractere" placeholder="Ecrire un caractère" style="width: 25%; margin: 0 auto;">
-				</div>
-				<button class="btn btn-primary" id="obtenirCaractere">Envoyer</button>
-			</form>
-			
-		</div>		
+      <div class="mb-3">
+
+        <form action="#" id="pendu">
+          <div class="form-group">
+              <input type="text" class="form-control" id="caractere" placeholder="Ecrire un caractère" style="width: 25%; margin: 0 auto;">
+          </div>
+          <button class="btn btn-primary" id="obtenirCaractere">Envoyer</button>
+        </form>
+      
+      </div>
+      
+      <div id="imageDuPendu"></div>
+    
+    </div>
 
     <!-- JavaScript -->
 	<script src="stringFunctions.js"></script>	
-	<script src="pendu.js"></script>		
+  <script src="pendu.js"></script>
+  <script src="decoupeImage.js"></script>
   </body>
 </html>
